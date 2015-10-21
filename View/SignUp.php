@@ -243,7 +243,7 @@ function test_input($data) {
 <h2>Register for SmartCap</h2>
     <span>Welcome!</span>
 <p><span class="error">* required field.</span></p>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> 
+<form method="post" action="../Controllers/SignUpController.php"> 
    Name: <input type="text" name="name" value="<?php echo $name;?>">
    <span class="error">* <?php echo $nameErr;?></span>
    <br><br>
@@ -350,8 +350,8 @@ h1 {float:left;padding:0 0 0 0}
       font-size:10px;
 		  color: black;
 		  text-align:relative;
-			font-weight:bold
-			position: relative;
+			font-weight:bold;
+			position:relative;
 		  width:70px;
 		  height:30px;
 		  border-radius: 9px; 
