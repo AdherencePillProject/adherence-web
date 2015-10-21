@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
             . 'VALUES($1, $2, $3, $4, $5, $6);';
     $result = pg_query_params($con, $query, $info);
 
-    var_dump($result);
+    //var_dump($result);
     if (!$result) {
         echo "FALSE";
     }

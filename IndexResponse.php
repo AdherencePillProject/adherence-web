@@ -18,7 +18,7 @@ $Password=$_POST["password"];
 
 
 //GET THE VALID PASSWORD 
- $db = pg_connect("host=127.0.0.1 port=5432 dbname=SmartCapV21 user=postgres password=root");
+ $db = pg_connect("host=127.0.0.1 port=5432 dbname=postgres user=postgres password=root");
    //$db = pg_connect( "$host $port $dbname $credentials"  );
    if(!$db){
       echo "Error : Unable to open database\n";
