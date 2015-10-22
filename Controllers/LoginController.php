@@ -2,6 +2,8 @@
 ?>
 <?php
 
+include('DBConnector.php');
+
 //$_SESSION['AccountID']=$_POST["accountID"];
 //$_SESSION['AccountType']=$_POST["type"];;
 //$_SESSION['Password']=$_POST["password"];
@@ -17,13 +19,6 @@ $password = $_POST["password"];
 
 $sql_password_parameter = array($accountID);
 
-//GET THE VALID PASSWORD 
-$db = pg_connect("host=127.0.0.1 port=5432 dbname=postgres user=postgres password=root");
-//$db = pg_connect( "$host $port $dbname $credentials"  );
-if (!$db) {
-    echo "cann't connect to database";
-    return FALSE;
-}
 
 /* -----user identify------9.16--- */
 switch ($accountType) {
@@ -39,15 +34,15 @@ switch ($accountType) {
     default:
         return FALSE;
 }
-$password_query = pg_query_params($db, $sql_password, $sql_password_parameter);
-if (!$password_query) {
+$query_result = DBConnector::executeQuery($sql_password, $sql_password_parameter);
+
+if (!$query_result) {
     echo pg_last_error();
     return FALSE;
 }
-//var_dump($password_query);
-//var_dump($password_query);
-$password_row = pg_fetch_row($password_query, 0);
-//var_dump($password_row);
+
+$password_row = pg_fetch_row($query_result, 0);
+
 $curPassword = ($password_row[0]);
 
 if ($curPassword == null) {
@@ -55,7 +50,6 @@ if ($curPassword == null) {
     return FALSE;
 }
 
-pg_close($db);
 //var_dump($password_query);
 if ($curPassword == $password) {
     echo "valid";
@@ -64,4 +58,3 @@ if ($curPassword == $password) {
     echo "invalid";
     return "invalid";
 }
-?>

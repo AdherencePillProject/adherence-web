@@ -12,26 +12,36 @@
  * @author mengchaowang
  */
 class DBConnector {
+
     private static $dbConnection;
-    public static function openDBConnection(){
-         $this->dbConnection = pg_connect("host=127.0.0.1 port=5432 dbname=postgres user=postgres password=root");
-         if(!$this->dbConnection ){
-             return FALSE;
-         } else {
-             return TRUE;
-         }
-    }
-    
-    public static function executeQuery($query, $parameters){
-        // To prevent from SQL Injection, use parameterization.
-        $result = openDBConnection();
-        if($result){
-            // DB Connection is open, execute the query
-            $result = pg_query_params($this->dbConnection, $query, $parameters);
-            // Closing connection
-            pg_close($this->dbConnection);
-        }else{
+
+    private static function openDBConnection() {
+        $configs = include('config.php');
+        $connectionQuery = "host=" . $configs["host"] . " port=" . $configs["port"] .
+                " dbname=" . $configs["dbname"] . " user=" . $configs["user"] .
+                " password=" . $configs["password"];
+        self::$dbConnection = pg_connect($connectionQuery);
+        if (!self::$dbConnection) {
+            echo pg_last_error();
             return FALSE;
+        } else {
+            return TRUE;
         }
     }
+
+    public static function executeQuery($query, $parameters) {
+        // To prevent from SQL Injection, use parameterization.
+        $result = self::openDBConnection();
+        if (!$result) {
+            echo pg_last_error();
+            return FALSE;
+        } else {
+            // DB Connection is open, execute the query
+            $result = pg_query_params(self::$dbConnection, $query, $parameters);
+            // Closing connection
+            pg_close(self::$dbConnection);
+            return $result;
+        }
+    }
+
 }
