@@ -157,7 +157,7 @@ $_SESSION['password'] = $_SESSION["password"];
         <div id="bottellid"><a href="login.php"><img src="images/logonew.jpg" ></a></div>
         <div id="bottelbody">
             <div class="formpart">
-                <form id="form1" name="form1" method="post" action="<?php echo $login_page; ?>"> 
+                <form id="form1" name="form1" method="post" action="../Controllers/LoginController.php"> 
                     <p>Account Type:
                         <select name="Account_type" id="AccountType">
                             <option>Patient</option>
@@ -178,7 +178,7 @@ $_SESSION['password'] = $_SESSION["password"];
                     <p>
                         <a href="SignUp.php">
                             <input name="Signup" type="button" class="button" value="Signup" /></a>
-                        <input type="button" name="Login" class="button" onclick="submitForm()" id="login" value="Log In" />
+                        <input type="submit" name="Login" class="button" id="login" value="Log In" />
 
                     </p>
 
@@ -186,7 +186,8 @@ $_SESSION['password'] = $_SESSION["password"];
                 <!--div id="tip"></div>-->
             </div>
         </div>
-
+        <!-- Submit form and getting redirected will be done through LoginControoler -->
+        <!--
         <script type="text/javascript">
 
             function createXmlHttp() {
@@ -240,7 +241,7 @@ $_SESSION['password'] = $_SESSION["password"];
                                 //this is test for the type of xmlHttp.responseText
                                 //alert(accountstate);
                                 //var newString = new String ();                        
-                                if (accountstate.replace(/(^\s*)|(\s*$)/g, "") == "valid") {//string.replace(/(^\s*)|(\s*$)/g, "") to remove special character
+                                if (accountstate.replace(/(^\s*)|(\s*$)/g, "").indexOf("valid") > -1) {//string.replace(/(^\s*)|(\s*$)/g, "") to remove special character
                                     alert("welcome!");
                                     switch (accounttype) {
                                         case "Patient":
@@ -257,7 +258,7 @@ $_SESSION['password'] = $_SESSION["password"];
                                     }
                                 }
                                 else {
-                                    alert("Not Valid User!Please check your password!");
+                                    alert(accountstate);
                                     top.location = 'newIndex.php';
                                 }
                                 //this is to test the format of xmlHttp.responsetext
@@ -270,7 +271,7 @@ $_SESSION['password'] = $_SESSION["password"];
                 }
             }
         </script>
-        </script>
+        </script>-->
     </body>
 </html>
 
