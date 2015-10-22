@@ -1,4 +1,4 @@
-# README #
+# README (In Progress) #
 
 This file is to give the people who take over the project a general idea about how to set up SmartCapWeb environment with OS X mainly.
 Most of the tools used here can also be found on Windows OS.
