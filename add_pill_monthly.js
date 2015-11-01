@@ -82,50 +82,46 @@ $('.wijmo-wijev-monthcell').each(function(){
 
 
 function AddSign(){
-          alert(curYear[0]);
-          var targetCells=$('.wijmo-wijev-monthcell');//document.getElementsByClassName('wijmo-wijev-monthcell');
-          var cellYear,cellMon,cellDay,curCellid;
-    	    var addStar = new Array();
-          var addpilldot = new Array();
-          var index_star=0;
-          var dot_class;
-    		if (targetCells){
-    			for(j=0,count=targetCells.length;j<count;j=j+1){
-    				curCellid=targetCells[j].id;
-    				cellYear=curCellid.substring(11,15);
-    				cellMon=curCellid.substring(4,7);
-                    cellDay=curCellid.substring(8,10);
-    				for(time=0;time<index_sign;time++){
-    				    if(curYear[time] == cellYear && curMonth[time] == cellMon && curDay[time]==cellDay){
-    					    //addStar[index_star]=document.createElement(\"img\");
-    					    //addStar[index_star].src=\"images/1star.jpg\";
-                            
-                            addpilldot[index_star]=document.createElement(\"div\");
-    		                addpilldot[index_star].id=\"dot\";
-                            
-                            dot_class=\"dot\";
-                            dot_class=dot_class+index_star;
-                            //addpilldot[index_star].class=dot_class;
-                            addpilldot[index_star].setAttribute(\"class\", dot_class); 
-                            addpilldot[index_star].style.float=\"left\";
-                            //addpilldot[index_star].style.Z-INDEX=index_star;
-                            addpilldot[index_star].style.POSITION=\"relative\";
-                           
-                            addpilldot[index_star].onclick=function new_star(){window.open (\"FullInformationPopup.html\",\"newwindow\", \"height=200, width=600, toolbar= no, menubar=no, scrollbars=yes, resizable=yes, location=no, status=no\")};
-    			            targetCells[j].appendChild(addpilldot[index_star]);
-    		                //following is used to get full information of the pill-taking. In dialog.html
-    				        //addStar[index_star].onclick=function new_star(){window.open (\"FullInformationPopup.html\", \"newwindow\", \"height=200, width=600, toolbar= no, menubar=no, scrollbars=yes, resizable=yes, location=no, status=no\")};
-    				        //targetCells[j].appendChild(addStar[index_star]);//ele.appendChild(dateVisualp[j]);
-    					    index_star++;
-                            }
-                      } 
-                   }
-    		
-    		     }
-            
-    	else{
-    		alert(\"no such cell\");
-    		}
+    alert(curYear[0]);
+    var targetCells=$('.wijmo-wijev-monthcell');//document.getElementsByClassName('wijmo-wijev-monthcell');
+    var cellYear, cellMon, cellDay, curCellid;
+    var addStar = new Array();
+    var addpilldot = new Array();
+    var index_star = 0;
+    var dot_class;
+    if (targetCells) {
+        for (var j = 0, count = targetCells.length; j < count; j = j + 1) {
+            curCellid = targetCells[j].id;
+            cellYear = curCellid.substring(11, 15);
+            cellMon = curCellid.substring(4, 7);
+            cellDay = curCellid.substring(8, 10);
+//            for (time = 0; time < index_sign; time++){
+//                if (curYear[time] == cellYear && curMonth[time] == cellMon && curDay[time] == cellDay){
+                    //addStar[index_star]=document.createElement(\"img\");
+                    //addStar[index_star].src=\"images/1star.jpg\";
+//                    addpilldot[index_star] = document.createElement(\"div\");
+//                    addpilldot[index_star].id = \"dot\";
+//                            
+//                    dot_class=\"dot\";
+//                    dot_class=dot_class+index_star;
+//                    //addpilldot[index_star].class=dot_class;
+//                    addpilldot[index_star].setAttribute(\"class\", dot_class); 
+//                    addpilldot[index_star].style.float=\"left\";
+//                    //addpilldot[index_star].style.Z-INDEX=index_star;
+//                    addpilldot[index_star].style.POSITION=\"relative\";
+//                           
+//                    addpilldot[index_star].onclick=function new_star(){window.open (\"FullInformationPopup.html\",\"newwindow\", \"height=200, width=600, toolbar= no, menubar=no, scrollbars=yes, resizable=yes, location=no, status=no\")};
+//                    targetCells[j].appendChild(addpilldot[index_star]);
+//    		      //following is used to get full information of the pill-taking. In dialog.html
+//                    //addStar[index_star].onclick=function new_star(){window.open (\"FullInformationPopup.html\", \"newwindow\", \"height=200, width=600, toolbar= no, menubar=no, scrollbars=yes, resizable=yes, location=no, status=no\")};
+					//targetCells[j].appendChild(addStar[index_star]);//ele.appendChild(dateVisualp[j]);
+//    					    index_star++;
+//				}
+//			}
+		}	
+	}
+	else{
+		alert("no such cell");
+	}
     	 
-         }";
-    }
+};

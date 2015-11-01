@@ -1,4 +1,4 @@
-_ChoosePillAndDate: function (year,pill,patient) {
+function _ChoosePillAndDate(year,pill,patient) {
 			var o = this.options;
 			if (o.viewType !== "day") {
 				o.viewType = "day";
@@ -23,37 +23,37 @@ _ChoosePillAndDate: function (year,pill,patient) {
 
                         var j=0;
                         var i=0;
- $.ajax({
-        url:'http://localhost:28746/Pill_response.php', //http://nusctesting2014.comuf.com/personalResponse.php',
-        type:'post',
-        //data: { curdate: ajax_data },
-        async:false,
-        success:function(result){
-            alert(result.toString());
-            receive=result;
-            //data = result;
-            //alert(data);
-            //convert into array
-        while(i<result.length){
-           pill[j]="";
-            if (result[i]="\""){
-               i=i+1;
-               while(result[i]!="\""){
-               pill[j]=pill[j]+result[i];
+    $.ajax({
+           url:'http://localhost:28746/Pill_response.php', //http://nusctesting2014.comuf.com/personalResponse.php',
+           type:'post',
+           //data: { curdate: ajax_data },
+           async:false,
+           success:function(result){
+               alert(result.toString());
+               receive=result;
+               //data = result;
+               //alert(data);
+               //convert into array
+           while(i<result.length){
+              pill[j]="";
+               if (result[i]="\""){
+                  i=i+1;
+                  while(result[i]!="\""){
+                  pill[j]=pill[j]+result[i];
+                  i++;
+                  } 
+
+               j++;
                i++;
-               } 
-            
-            j++;
-            i++;
-            
+
+               }
             }
-         }
-         alert(pill[0]);
-        },
-        error:function(msg){
-            alert('Error:'+msg);
-        }
-    });
+            alert(pill[0]);
+           },
+           error:function(msg){
+               alert('Error:'+msg);
+           }
+       });
 /**************end of ajax*****************************/
 /**************add row*********************************/
 var p=0;
@@ -76,71 +76,83 @@ var record="<div class=\"wijmo-wijev-timeinterval weekly-pill-record ui-widget-c
 /****************add ruler*****************************/
 
    //convert into date type
-column_date=column_class.substring(39,43);
-                 column_date+="-";
-                 if(column_class.substring(44,45)=="1"){
-                     if(column_class.substring(45,46)=="_"){
-                         column_date+="02-";
-                         column_date+=column_class.substring(46,48);
-                      }
-                     else{
-                         switch (column_class.substring(44,46)){
-                             case "10": column_date+="11";
-                                     break;
-                             case "11": column_date+="12";
-                                     break;
-                             
-                             default:break;
-                            }   
-                         column_date+="-";
-                         column_date+=column_class.substring(47,49);
-                      }
-                   }
-                     
-                else{
-                    switch (column_class.substring(44,45)){
-                             case "0": column_date+="01";
-                                     break;
-                             case "2": column_date+="03";
-                                     break;
-                             case "3": column_date+="04";
-                                     break;
-                             case "4": column_date+="05";
-                                     break;
-                             case "5": column_date+="06";
-                                     break;
-                             case "6": column_date+="07";
-                                     break;
-                             case "7": column_date+="08";
-                                     break;
-                             case "8": column_date+="09";
-                                     break;
-                             case "9": column_date+="10";
-                                     break;
-                             default:break;
-                  }
-                    column_date+="-";
-                    column_date+=column_class.substring(46,48);
-                }
-alert(column_date);
-  
- $.ajax({
-        url:'http://localhost:28746/personalResponse.php',
-        type:'post',
-        data: { curdate: column_date,pillname:pill[p] },
-        async:false,
-        success:function(result){
-            alert(result);
-            receive=result;
-            times = result;
-            alert("taking time:"+times);
-            },
-        error:function(msg){
-            alert('Error:'+msg);
-        }
-    });
+    column_date=column_class.substring(39,43);
+    column_date += "-";
+    if (column_class.substring(44, 45) == "1") {
+            if (column_class.substring(45, 46) == "_") {
+                column_date += "02-";
+                column_date += column_class.substring(46, 48);
+            }
+            else {
+                switch (column_class.substring(44, 46)) {
+                    case "10":
+                        column_date += "11";
+                        break;
+                    case "11":
+                        column_date += "12";
+                        break;
 
-     record = record + times +"</div>";
-     $(".wijmo-wijev-daycolumn").append(record);          
+                    default:
+                        break;
+                }
+                column_date += "-";
+                column_date += column_class.substring(47, 49);
+            }
+        }
+    else {
+            switch (column_class.substring(44, 45)) {
+                case "0":
+                    column_date += "01";
+                    break;
+                case "2":
+                    column_date += "03";
+                    break;
+                case "3":
+                    column_date += "04";
+                    break;
+                case "4":
+                    column_date += "05";
+                    break;
+                case "5":
+                    column_date += "06";
+                    break;
+                case "6":
+                    column_date += "07";
+                    break;
+                case "7":
+                    column_date += "08";
+                    break;
+                case "8":
+                    column_date += "09";
+                    break;
+                case "9":
+                    column_date += "10";
+                    break;
+                default:
+                    break;
+            }
+            column_date += "-";
+            column_date += column_class.substring(46, 48);
+        }
+    alert(column_date);
+  
+    $.ajax({
+           url:'http://localhost:28746/personalResponse.php',
+           type:'post',
+           data: { curdate: column_date,pillname:pill[p] },
+           async:false,
+           success:function(result){
+               alert(result);
+               receive=result;
+               times = result;
+               alert("taking time:"+times);
+               },
+           error:function(msg){
+               alert('Error:'+msg);
+           }
+       });
+
+    record = record + times +"</div>";
+    $(".wijmo-wijev-daycolumn").append(record);          
 	 }
-     }
+}

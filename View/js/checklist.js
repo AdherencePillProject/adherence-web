@@ -4,12 +4,19 @@
  * and open the template in the editor.
  */
 
-$(document).on("click", ".word", function(){
-    var list = $(this).parent().siblings();
-    if($(list).css('opacity') == '1') {
-        $(list).animate({opacity:0}, 800, function(){$(this).toggle(800);});
-    }
-    else {
-        $(list).toggle(800).animate({opacity:1});
-    }
-});
+
+
+function taskState(stateArray) {
+    var threshold = 50;
+    var list = $('.list');
+    var first = $('.list')[0];
+//    list.each(function(i){
+//       console.log(i + $(this).attr('class')); 
+//    });
+	console.log($(first).attr('class'));
+    stateArray.forEach(function(value,i) {
+//        if (value==100)
+//            $(list)[i].;
+        console.log(value + ' ' + i);
+    });
+}

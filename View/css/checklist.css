@@ -52,54 +52,109 @@ body {
   position: relative;
 }
 
-.check{
+.notdone{
+  background: #FF4040 !important;
+}
+
+.halfdone{
+  background: #FFFF00 !important;
+}
+
+.done{
   background: #5a8445 !important;
 }
 
 /* the square */
 .uncheck:before{
   content:"";
-  background: #d0d6d4;
+  position: absolute;
+  top: 14px;
+  left: -43px;
   width: 22px;
   height: 22px;
-  position: absolute;
-  left: -45px;
-  top: 14px;
+  background: #d0d6d4;
 }
 
-/* the left part of the check sign */
-.check:before{
-  content: "";
-  position: absolute;
-  top: 22px;
-  left: -45px;
-  width: 10px;
-  height: 20px;
-  transform: rotate(-45deg);
-  background: #5a8445;
+/* the left part of the cross sign */
+.notdone:before{
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: -38px;
+	width: 9px;
+	height: 30px;
+	transform: rotate(-45deg);
+	background: #FF4040;
 }
 
-/* the right part of the check sign */
-.check:after{
-  content: "";
-  position: absolute;
-  top: 9px;
-  left: -32px;
-  width: 10px;
-  height: 34px;
-  transform: rotate(45deg);
-  background: #5a8445;
+/* the right part of the cross sign */
+.notdone:after{
+	content: "";
+	position: absolute;
+	top: 10px;
+	left: -38px;
+	width: 9px;
+	height: 30px;
+	transform: rotate(45deg);
+	background: #FF4040;
+}
+
+/* the check sign */
+.done:before{
+	/*Add another block-level blank space*/
+	content: '';
+	display: block;
+	position: absolute;
+	top: 6px;
+	left: -43px;
+
+	/*Make it a small rectangle so the border will create an L-shape*/
+	width: 20px;
+	height: 34px;
+	
+	/*Add a green border on the bottom and left, creating that 'L' */
+	border: solid #5a8445;
+	border-width: 0 10px 10px 0;
+
+	/*Rotate the L 45 degrees to turn it into a checkmark*/
+	transform: rotate(45deg);
+}
+
+/* the check sign */
+.halfdone:before{
+	content: '';
+	display: block;
+	position: absolute;
+	top: 6px;
+	left: -42px;
+	width: 20px;
+	height: 36px;
+	border: solid #FFFF00;
+	border-width: 0 8px 8px 0;
+	transform: rotate(45deg);
+}
+
+/* a cross on the check sign */
+.halfdone:after{
+	content: "";
+	position: absolute;
+	top: 12px;
+	left: -29px;
+	width: 8px;
+	height: 22px;
+	transform: rotate(-45deg);
+	background: #FFFF00;
 }
 
 .word {
-    padding: 0% 8%;
-    font-size: 35px;    
-    font-family: 'Pathway Gothic One', sans-serif;
-    letter-spacing: 4px;
+  padding: 0% 8%;
+  font-size: 35px;    
+  font-family: 'Pathway Gothic One', sans-serif;
+  letter-spacing: 4px;
 }
 
-.check > .word {
-    color: white;
+.done > .word {
+  color: white;
 }
 
 .board{

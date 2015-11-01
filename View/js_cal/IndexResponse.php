@@ -45,7 +45,7 @@ EOF;
                  $curPassword=($password_row[0]);
           }*/
      /**************for mysql*************/     
-          $sql = "SELECT `patient_password` FROM `patient` WHERE `patient_id`='$AccountID';    
+          $sql = "SELECT `patient_password` FROM `patient` WHERE `patient_id`='$AccountID'";    
           $stmt = $dbh->prepare($sql);    
           $stmt->execute(array(':login'=>$login));    
            while($row = $stmt->fetch(PDO::FETCH_ASSOC)){       
@@ -66,7 +66,7 @@ EOF;
          while( $password_row = pg_fetch_row($password_query)){
                 $curPassword=($password_row[0]);
          }*/
-         $sql = "SELECT `doctor_password` FROM `doctor` WHERE `doctor_id`='$AccountID';    
+         $sql = "SELECT `doctor_password` FROM `doctor` WHERE `doctor_id`='$AccountID'";    
           $stmt = $dbh->prepare($sql);    
           $stmt->execute(array(':login'=>$login));    
            while($row = $stmt->fetch(PDO::FETCH_ASSOC)){       
@@ -75,7 +75,6 @@ EOF;
           
          break;
          
-         break;
          case "Phamercy":
          break;  /**/
          default:
